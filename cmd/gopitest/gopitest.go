@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mezzato/revpi/pkg/gopicontrol"
+	"github.com/TRICERA-energy/revpi/pkg/gopicontrol"
 )
 
 func main() {

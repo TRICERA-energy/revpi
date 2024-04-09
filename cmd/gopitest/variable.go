@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/mezzato/revpi/pkg/gopicontrol"
+	"github.com/TRICERA-energy/revpi/pkg/gopicontrol"
 )
 
 func writeVariableValue(ctrl *gopicontrol.RevPiControl, variableName string, v uint32) (err error) {
