@@ -13,9 +13,9 @@ import (
 )
 
 // ByteToUint8Array converts a byte slice to a uint8 array.
-func ByteToUint8Array(s []byte) (r [32]uint8) {
+func ByteToUint8Array(s []byte) (r [32]int8) {
 	for i, c := range s {
-		r[i] = uint8(c)
+		r[i] = int8(c)
 	}
 	return r
 }
@@ -286,9 +286,9 @@ func (c *RevPiControl) UpdateFirmware(addrP uint32) (result int, err error) {
 	var r uintptr
 
 	if addrP == 0 {
-		r, _, err = ioctl(c.handle.Fd(), KB_UPDATE_DEVICE_FIRMWARE, 0)
+		r, _, err = ioctl(c.handle.Fd(), PICONTROL_UPLOAD_FIRMWARE, 0)
 	} else {
-		r, _, err = ioctl(c.handle.Fd(), KB_UPDATE_DEVICE_FIRMWARE, uintptr(unsafe.Pointer(&addrP)))
+		r, _, err = ioctl(c.handle.Fd(), PICONTROL_UPLOAD_FIRMWARE, uintptr(unsafe.Pointer(&addrP)))
 	}
 
 	if err != nil {

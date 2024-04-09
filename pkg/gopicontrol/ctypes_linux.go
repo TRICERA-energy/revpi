@@ -1,9 +1,10 @@
+//go:build ignore
 // +build ignore
 
 package gopicontrol
 
-// #cgo CFLAGS: -I${SRCDIR}/../../interface/piControl
-// #include <piControlIf.h>
+// #cgo CFLAGS: -I${SRCDIR}/interface
+// #include <piControl.h>
 import "C"
 
 type SDeviceInfo C.struct_SDeviceInfoStr
@@ -18,6 +19,9 @@ type SDIOResetCounter C.struct_SDIOResetCounterStr
 
 const (
 	PICONTROL_DEVICE               = C.PICONTROL_DEVICE
+	REV_PI_DEV_FIRST_RIGHT         = C.REV_PI_DEV_FIRST_RIGHT
+	REV_PI_DEV_CNT_MAX             = C.REV_PI_DEV_CNT_MAX
+	REV_PI_ERROR_MSG_LEN           = C.REV_PI_ERROR_MSG_LEN
 	KB_RESET                       = C.KB_RESET
 	KB_GET_DEVICE_INFO             = C.KB_GET_DEVICE_INFO
 	KB_GET_DEVICE_INFO_LIST        = C.KB_GET_DEVICE_INFO_LIST
@@ -25,7 +29,7 @@ const (
 	KB_SET_VALUE                   = C.KB_SET_VALUE
 	KB_FIND_VARIABLE               = C.KB_FIND_VARIABLE
 	KB_DIO_RESET_COUNTER           = C.KB_DIO_RESET_COUNTER
-	KB_UPDATE_DEVICE_FIRMWARE      = C.KB_UPDATE_DEVICE_FIRMWARE
+	PICONTROL_UPLOAD_FIRMWARE      = C.PICONTROL_UPLOAD_FIRMWARE
 	KB_GET_LAST_MESSAGE            = C.KB_GET_LAST_MESSAGE
 	KB_INTERN_IO_MSG               = C.KB_INTERN_IO_MSG
 	KB_WAIT_FOR_EVENT              = C.KB_WAIT_FOR_EVENT
