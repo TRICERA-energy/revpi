@@ -51,6 +51,7 @@ func writeVariableValue(ctrl *gopicontrol.RevPiControl, variableName string, v u
 	fmt.Printf("written value %d dec (=%02x hex) to offset %d.\n", data, data, sPiVariable.I16uAddress)
 	return nil
 }
+
 func showVariableInfo(ctrl *gopicontrol.RevPiControl, variableName string) (err error) {
 	sPiVariable, err := ctrl.GetVariableInfo(variableName)
 	if err != nil {

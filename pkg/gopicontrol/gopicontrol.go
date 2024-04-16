@@ -25,7 +25,6 @@ func NumToBytes(num interface{}) ([]byte, error) {
 	buf := new(bytes.Buffer)
 	err := binary.Write(buf, binary.LittleEndian, num)
 	if err != nil {
-		fmt.Println("binary.Write failed:", err)
 		return nil, err
 	}
 	return buf.Bytes(), nil
@@ -270,7 +269,7 @@ func (c *RevPiControl) WaitForEvent() (err error) {
 		return err
 	}
 
-	if ioctl(c.handle.Fd(), KB_WAIT_FOR_EVENT, uintptr(unsafe.Pointer(&event))); err != nil {
+	if _, _, err = ioctl(c.handle.Fd(), KB_WAIT_FOR_EVENT, uintptr(unsafe.Pointer(&event))); err != nil {
 		return err
 	}
 	return nil
